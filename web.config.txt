@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <location path="." inheritInChildApplications="false">
+    <system.webServer>
+      <handlers>
+        <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModuleV2" resourceType="Unspecified" />
+      </handlers>
+      <aspNetCore processPath="dotnet" 
+                  arguments=".\Shop.dll" 
+                  stdoutLogEnabled="true" 
+                  stdoutLogFile=".\logs\stdout" 
+                  hostingModel="inprocess">
+        <environmentVariables>
+          <environmentVariable name="ASPNETCORE_ENVIRONMENT" value="Production" />
+        </environmentVariables>
+      </aspNetCore>
+      <httpCompression>
+        <dynamicTypes>
+          <add mimeType="application/javascript" enabled="true" />
+          <add mimeType="application/json" enabled="true" />
+          <add mimeType="text/css" enabled="true" />
+        </dynamicTypes>
+      </httpCompression>
+      <rewrite>
+        <rules>
+          <rule name="Force HTTPS" enabled="true">
+            <match url="(.*)" />
+            <conditions>
+              <add input="{HTTPS}" pattern="off" ignoreCase="true" />
+            </conditions>
+            <action type="Redirect" url="https://{HTTP_HOST}/{R:1}" redirectType="Permanent" />
+          </rule>
+        </rules>
+      </rewrite>
+    </system.webServer>
+  </location>
+</configuration>
