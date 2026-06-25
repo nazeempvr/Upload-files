@@ -1,0 +1,15 @@
+Enable-WindowsOptionalFeature -Online -FeatureName IIS-WebServerRole -All -NoRestart; `
+Enable-WindowsOptionalFeature -Online -FeatureName IIS-ApplicationDevelopment -NoRestart; `
+Enable-WindowsOptionalFeature -Online -FeatureName IIS-AspNetCoreHostingModule -NoRestart; `
+Enable-WindowsOptionalFeature -Online -FeatureName IIS-StaticContent -NoRestart; `
+Enable-WindowsOptionalFeature -Online -FeatureName IIS-CommonHttpFeatures -NoRestart; `
+Enable-WindowsOptionalFeature -Online -FeatureName IIS-HttpCompressionStatic -NoRestart; `
+Enable-WindowsOptionalFeature -Online -FeatureName IIS-HttpCompressionDynamic -NoRestart; `
+Enable-WindowsOptionalFeature -Online -FeatureName IIS-URLRewrite -NoRestart; `
+Enable-WindowsOptionalFeature -Online -FeatureName IIS-RequestFiltering -NoRestart; `
+Enable-WindowsOptionalFeature -Online -FeatureName IIS-HttpLogging -NoRestart; `
+Enable-WindowsOptionalFeature -Online -FeatureName IIS-ManagementConsole -NoRestart; `
+Enable-WindowsOptionalFeature -Online -FeatureName IIS-ManagementScriptingTools -NoRestart; `
+Enable-WindowsOptionalFeature -Online -FeatureName IIS-HealthAndDiagnostics -NoRestart; `
+iisreset /restart; `
+Write-Host "✓ All IIS Features Installed!" 
